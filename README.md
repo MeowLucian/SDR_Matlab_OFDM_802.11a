@@ -7,6 +7,7 @@ Using Software Designed Radio to transmit OFDM signals at 2.4 GHz.
 Transmitter and Receiver hardware : Zedboard + AD9361
 
 # Program Structure :
+
 Hardware_TX.m
 > TX_signal.mat
 
@@ -29,4 +30,5 @@ RX_test
 > RX2.mat
 
 # Program GUI :
+
 ![Program GUI](http://i.imgur.com/tEVrFE4.png)
