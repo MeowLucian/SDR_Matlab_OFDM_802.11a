@@ -8,7 +8,7 @@ Transmitter and Receiver hardware : Zedboard + AD9361
 
 # Program Structure :
 
-Hardware_TX.m
+## Hardware_TX.m
 > TX_signal.mat
 
 > OFDM_TX.m
@@ -16,12 +16,12 @@ Hardware_TX.m
 * data_Payload_2.mat
 * oversamp.m
 
-Hardware_RX.m
+## Hardware_RX.m
 > OFDM_RX.m
 * Long_preamble_slot_Frequency.mat
 * setstate0.m
 
-RX_test
+## RX_test
 * RX.mat
 * RX2.mat
 
