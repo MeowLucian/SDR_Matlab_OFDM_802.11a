@@ -12,22 +12,18 @@ Hardware_TX.m
 > TX_signal.mat
 
 > OFDM_TX.m
->> data_Payload_1.mat
-
->> data_Payload_2.mat
-
->> oversamp.m
+* data_Payload_1.mat
+* data_Payload_2.mat
+* oversamp.m
 
 Hardware_RX.m
 > OFDM_RX.m
->> Long_preamble_slot_Frequency.mat
-
->> setstate0.m
+* Long_preamble_slot_Frequency.mat
+* setstate0.m
 
 RX_test
-> RX.mat
-
-> RX2.mat
+* RX.mat
+* RX2.mat
 
 # Program GUI :
 
