@@ -27,6 +27,6 @@ Transmitter and Receiver hardware : Zedboard + AD9361
 
 # Program GUI :
 
-![Program GUI](http://i.imgur.com/tEVrFE4.png)
+![Program GUI](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/GUI.png)
 Video : https://www.youtube.com/watch?v=RAbS05toM0M
-![Program GUI](http://i.imgur.com/LxT3NDr.gif)
+![Program GUI gif](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/GUI_gif.gif)
