@@ -1,7 +1,7 @@
 function [Threshold,M_n,Threshold_graph,H_est_time,RX_Payload_1_no_Equalizer,RX_Payload_2_no_Equalizer,RX_Payload_1_no_pilot,RX_Payload_2_no_pilot,BER]=OFDM_RX(RX)
 j=1i;
 %% Debug mode
-% clear;close all;clc;j=1i;
+% clear;close all;clc;
 % load('RX2');
 %% Root Raised Cosine filter
 rolloff=0.5;
@@ -53,15 +53,6 @@ Frame_After_Coarse=Frame_DWN_sampling.*exp(-j*2*pi*f_Coarse_est*Ts*(0:480-1)); %
 z=Frame_After_Coarse(D*12+1:D*16)*Frame_After_Coarse(D*16+1:D*20)'; % [1x64]*[64x1]=[1x1]
 f_Fine_est=(-1/(2*pi*64*Ts))*angle(z);
 Frame_After_Fine=Frame_After_Coarse.*exp(-j*2*pi*f_Fine_est*Ts*(0:480-1)); % [1x160]
-%% CFO test
-% Ts=50e-9;
-% z=Frame_DWN_sampling(D*5+1:D*6)*Frame_DWN_sampling(D*6+1:D*7)'; % [1x16]*[16x1]
-% f_Coarse_est=(-1/(2*pi*D*Ts))*angle(z);
-% Frame_After_Coarse=Frame_DWN_sampling(D*7+1:end).*exp(-j*2*pi*f_Coarse_est*Ts*(0:480-D*7-1)); % [1x368]
-
-% z=Frame_After_Coarse(D*5+1:D*9)*Frame_After_Coarse(D*9+1:D*13)'; % [1x64]*[64x1]=[1x1]
-% f_Fine_est=(-1/(2*pi*64*Ts))*angle(z);
-% Frame_After_Fine=Frame_After_Coarse(D*13+1:end).*exp(-j*2*pi*f_Fine_est*Ts*(0:368-D*13-1)); % [1x160]
 %% Symbol Timing Estimation
 %% Channel Estimation
 Long_preamble_1=Frame_After_Fine(D*12+1:D*16); % [1x64]
