@@ -6,7 +6,7 @@ Using Software Designed Radio to transmit OFDM signals at 2.4 GHz.
 
 Transmitter and Receiver hardware : Zedboard + AD9361
 
-# Program Structure :
+# Code Structure :
 
 ## Hardware_TX.m
 > TX_signal.mat
@@ -30,3 +30,20 @@ Transmitter and Receiver hardware : Zedboard + AD9361
 ![Program GUI](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/GUI.png)
 Video : https://www.youtube.com/watch?v=RAbS05toM0M
 ![Program GUI gif](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/GUI_gif.gif)
+
+# System Model :
+
+## TX System Model
+<img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/TX%20System%20Model_01.png" width="500">
+
+> * Short Preamble
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/TX%20System%20Model_02.png" width="800">
+
+> * Long Preamble
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/TX%20System%20Model_03.png" width="800">
+
+> * Payload
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/TX%20System%20Model_04.png" width="600">
+
+> * TX signal
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a_2.4GHz/master/Picture/TX%20System%20Model_05.png" width="700">
