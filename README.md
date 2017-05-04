@@ -34,16 +34,35 @@ Video : https://www.youtube.com/watch?v=RAbS05toM0M
 # System Model :
 
 ## TX System Model
-<img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_01.png" width="500">
+<img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model.png" width="500">
 
 > * Short Preamble
-> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_02.png" width="800">
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_Short%20Preamble.png" width="800">
 
 > * Long Preamble
-> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_03.png" width="800">
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_Long%20Preamble.png" width="800">
 
 > * Payload
-> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_04.png" width="600">
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_Payload.png" width="600">
 
 > * TX signal
-> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_05.png" width="700">
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_Final.png" width="700">
+
+## TX System Model
+<img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model.png" width="400">
+
+* TX RX Parameters
+
+| Center Frequency     | 5 GHz                |
+|:--------------------:|:--------------------:|
+| Baseband Sample Rate | 20 MHz               |
+| Ts                   | 50 ns                |
+| Samples Per Frame    | 3000                 |
+| TX IP address        | 192.168.3.2          |
+| RX IP address        | 192.168.30.3         |
+
+> * "Delay and Correlate" algorithm for Packet Detection
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Delay%20and%20Correlate%20algorithm.png" width="500">
+
+> * Packet Detection (normal case)
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Packet%20Detection.png" width="600">
