@@ -48,11 +48,7 @@ Video : https://www.youtube.com/watch?v=RAbS05toM0M
 > * TX signal
 > <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_Final.png" width="700">
 
-## TX System Model
-<img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model.png" width="400">
-
-* TX RX Parameters
-
+## TX RX Hardware Parameters
 | Center Frequency     | 5 GHz                |
 |:--------------------:|:--------------------:|
 | Baseband Sample Rate | 20 MHz               |
@@ -61,8 +57,23 @@ Video : https://www.youtube.com/watch?v=RAbS05toM0M
 | TX IP address        | 192.168.3.2          |
 | RX IP address        | 192.168.30.3         |
 
+## RX System Model
+<img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model.png" width="300">
+
 > * "Delay and Correlate" algorithm for Packet Detection
 > <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Delay%20and%20Correlate%20algorithm.png" width="500">
 
 > * Packet Detection (normal case)
 > <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Packet%20Detection.png" width="600">
+
+> * Packet Detection (problem case & deselect the imperfect packet)
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Packet%20Detection(problem).png" width="600">
+
+> * Coarse CFO Estimation & Compensation
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Coarse%20CFO%20Estimation.png" width="600">
+
+> * Fine CFO Estimation & Compensation
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Fine%20CFO%20Estimation.png" width="600">
+
+> * Channel Estimation & Equalizer
+> <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Channel%20Estimation%20%26%20Equalizer.png" width="600">
