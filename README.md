@@ -6,6 +6,8 @@ Using Software Designed Radio to transmit OFDM signals at 5 GHz.
 
 Transmitter and Receiver hardware : Zedboard + AD9361
 
+![Hardware](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/Hardware.jpg)
+
 # Code Structure :
 
 ## Hardware_TX.m
