@@ -2,13 +2,14 @@
 
 This example is based on IEEE 802.11a OFDM protocol.
 
-Using Software Designed Radio to transmit OFDM signals at 5 GHz.
+Using Software Designed Radio (SDR) to transmit OFDM signals at 5 GHz.
 
-Transmitter and Receiver hardware : Zedboard + AD9361
+Transmitter and Receiver hardware : Zedboard (Xilinx Zynq®-7000) + AD9361 (Analog Device)
 
 ![Hardware](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/Hardware.jpg)
 
 # Code Structure :
+Please execute `Hardware_TX.m` and `Hardware_RX.m`
 
 ## Hardware_TX.m
 > TX_signal.mat
@@ -27,7 +28,7 @@ Transmitter and Receiver hardware : Zedboard + AD9361
 * RX.mat
 * RX2.mat
 
-# Program GUI :
+# GUI :
 
 ![Program GUI](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/GUI.png)
 Video : https://www.youtube.com/watch?v=RAbS05toM0M
