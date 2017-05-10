@@ -68,7 +68,7 @@ Video : https://www.youtube.com/watch?v=RAbS05toM0M
 > * "Delay and Correlate" algorithm for Packet Detection
 > <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Delay%20and%20Correlate%20algorithm.png" width="500">
 
-> * Packet Detection (normal case)
+> * Packet Detection (normal case) , Threshold=0.75
 > <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model_Packet%20Detection.png" width="600">
 
 > * Packet Detection (problem case & deselect the imperfect packet)
