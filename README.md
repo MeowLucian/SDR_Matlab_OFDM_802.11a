@@ -59,8 +59,28 @@ Video : https://www.youtube.com/watch?v=RAbS05toM0M
 | Baseband Sample Rate | 20 MHz               |
 | Ts                   | 50 ns                |
 | Samples Per Frame    | 3000                 |
+| PC Host IP address   | 192.168.3.1          |
 | TX IP address        | 192.168.3.2          |
-| RX IP address        | 192.168.30.3         |
+| RX IP address        | 192.168.3.3          |
+
+## The way to change Hardware IP / Mac address
+
+Edit `newip.sh` file in SD card
+
+```
+# Flush existing config
+ip addr flush dev eth0
+ip link set dev eth0 down
+# Set up new config
+ip addr add 192.168.3.3/24 dev eth0
+ip link set eth0 address 00:0A:35:00:01:23
+ip route add default via 192.168.3.1
+ip link set dev eth0 up
+```
+
+Then, Use router DHCP hand setting mode to distribute network configuration parameters :
+
+![Router setting](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/router%20setting.PNG)
 
 ## RX System Model
 <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/RX%20System%20Model.png" width="300">
