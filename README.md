@@ -4,7 +4,7 @@ This example is based on IEEE 802.11a OFDM protocol.
 
 Using Software Designed Radio (SDR) to transmit OFDM signals at 5 GHz.
 
-Transmitter and Receiver hardware : Zedboard (Xilinx Zynq®-7000) + AD9361 (Analog Device)
+Transmitter and Receiver hardware : Zedboard (Xilinx Zynq®-7000) + AD9361 (Analog Device-FMCOMMS3)
 
 ![Hardware](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/Hardware.jpg)
 
