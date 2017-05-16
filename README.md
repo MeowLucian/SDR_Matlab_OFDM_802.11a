@@ -78,7 +78,7 @@ ip route add default via 192.168.3.1
 ip link set dev eth0 up
 ```
 
-Then, Use router DHCP hand setting mode to distribute network configuration parameters :
+Then, use router DHCP hand setting mode to distribute network configuration parameters :
 
 ![Router setting](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/Router%20setting.PNG)
 
