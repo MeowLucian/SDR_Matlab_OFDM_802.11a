@@ -54,14 +54,14 @@ Video : https://www.youtube.com/watch?v=RAbS05toM0M
 > <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model_Final.png" width="700">
 
 ## TX RX Hardware Parameters
-| Center Frequency     | 5 GHz                |
-|:--------------------:|:--------------------:|
-| Baseband Sample Rate | 20 MHz               |
-| Ts                   | 50 ns                |
-| Samples Per Frame    | 3000                 |
-| PC Host IP address   | 192.168.3.1          |
-| TX IP address        | 192.168.3.2          |
-| RX IP address        | 192.168.3.3          |
+| Center Frequency                 | 5 GHz                            |
+|:--------------------------------:|:--------------------------------:|
+| Baseband Sample Rate (Bandwidth) | 20 MHz                           |
+| Ts                               | 50 ns                            |
+| Samples Per Frame                | 3000                             |
+| PC Host IP address               | 192.168.3.1                      |
+| TX IP address                    | 192.168.3.2                      |
+| RX IP address                    | 192.168.3.3                      |
 
 ## The way to change Hardware IP / Mac address
 
