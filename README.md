@@ -1,4 +1,5 @@
 # SDR_Matlab_OFDM_802.11a
+[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/MeowLucian/SDR_Matlab_OFDM_802.11a/blob/master/LICENSE)
 
 This example is based on IEEE 802.11a OFDM protocol.
 
