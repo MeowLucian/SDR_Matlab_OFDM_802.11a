@@ -12,7 +12,7 @@ Transmitter and Receiver hardware : Zedboard (Xilinx Zynq®-7000) + AD9361 (Anal
 Before executing this code, please follow this [tutorial](https://www.mathworks.com/help/supportpkg/xilinxzynqbasedradio/ug/install-support-package-for-xilinx-zynq-based-radio.html) to install support package for Xilinx Zynq-Based Radio in Matlab.
 
 # Code Structure :
-Please execute `Hardware_TX.m` and `Hardware_RX.m`
+Please open multiple Matlab windows to run `Hardware_TX.m` and `Hardware_RX.m` respectively.
 
 ## Hardware_TX.m
 > TX_signal.mat
