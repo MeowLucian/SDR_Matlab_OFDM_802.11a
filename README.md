@@ -58,7 +58,7 @@ Video : https://www.youtube.com/watch?v=RAbS05toM0M
 | Center Frequency                 | 5 GHz                            |
 |:--------------------------------:|:--------------------------------:|
 | Baseband Sample Rate (Bandwidth) | 20 MHz                           |
-| Ts                               | 50 ns                            |
+| Ts (Sampling time)               | 50 ns                            |
 | Samples Per Frame                | 3000                             |
 | PC Host IP address               | 192.168.3.1                      |
 | TX IP address                    | 192.168.3.2                      |
