@@ -1,7 +1,7 @@
 clear;close all;clc;j=1i;
 %% Button setting
-button = uicontrol; % 產生按鈕
-set(button,'String','Stop！','Position',[1300 20 100 60]); % 加入文字「Stop！」
+button = uicontrol; % Generate GUI button
+set(button,'String','Stop !','Position',[1300 20 100 60]); % Add "Stop !" text
 %% Parameter
 rx_object = sdrrx('ZedBoard and FMCOMMS2/3/4',...
            'IPAddress','192.168.3.3',...
@@ -13,7 +13,7 @@ rx_object = sdrrx('ZedBoard and FMCOMMS2/3/4',...
 Ready_Time=200;
 scale=1024;
 %% Main
-state=1; % 開始狀態
+state=1; % status Start
 Run_time_number=1;
 while(state==1)
     try
@@ -56,7 +56,7 @@ while(state==1)
     Run_time_number=Run_time_number+1;
     
     % ----- Button Behavior -----%
-    set(button,'Callback','setstate0'); % 設定按鈕的反應指令
+    set(button,'Callback','setstate0'); % Set the reaction of pushing button
     set(gcf,'Units','centimeters','position',[1 2 49 24]);
     
     catch
