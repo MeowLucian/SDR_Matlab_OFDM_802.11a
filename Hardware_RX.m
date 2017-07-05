@@ -1,12 +1,14 @@
 clear;close all;clc;j=1i;
 %% Button setting
+figure('Name','RX','NumberTitle','off');
 button = uicontrol; % Generate GUI button
-set(button,'String','Stop !','Position',[1450 15 100 60]); % Add "Stop !" text
+set(button,'String','Stop !','Position',[1475 15 100 60]); % Add "Stop !" text
+set(gcf,'Units','centimeters','position',[1 2 49 24]); % Set the postion of GUI
 %% Parameter
 rx_object = sdrrx('ZedBoard and FMCOMMS2/3/4',...
            'IPAddress','192.168.3.3',...
            'CenterFrequency',5e9,...
-           'BasebandSampleRate', 20e6,... % Bandwidth
+           'BasebandSampleRate', 20e6,...   % Bandwidth
            'ChannelMapping', 1,...
            'SamplesPerFrame', 3000);
 
@@ -29,8 +31,8 @@ while(state==1)
         RX=RX_real+RX_imag*j; % [1x3000]
         
         subplot(2,4,1),plot(RX,'.');title('RX-Raw');axis([-1.5 1.5 -1.5 1.5]);axis square;
-        subplot(2,4,2),plot(RX_real);title('RX-real');axis square;
-        subplot(2,4,3),plot(RX_imag);title('RX-imag');axis square;
+        subplot(2,4,2),plot(RX_real);title('I');axis([1 3000 -1.5 1.5]);axis square;
+        subplot(2,4,3),plot(RX_imag);title('Q');axis([1 3000 -1.5 1.5]);axis square;
         drawnow;
         
         % ----- Demodulation -----%
@@ -55,21 +57,23 @@ while(state==1)
     end % Start
     
     if Run_time_number<=Ready_Time  % Ready
-%        disp('Ready');
+        % disp('Ready');
     end
     Run_time_number=Run_time_number+1;
     
     % ----- Button Behavior -----%
-    set(button,'Callback','setstate0'); % Set the reaction of pushing button
-    set(gcf,'Units','centimeters','position',[1 2 49 24]);
+    set(button,'Callback','setstate0_RX'); % Set the reaction of pushing button
     
     catch
         ErrorMessage=lasterr;
         fprintf('Error Message : \n');
         disp(ErrorMessage);
         fprintf(2,'Error occurred & Stop Hardware\n');
-%         release(rx_object);
-%         state=0;
+        
+        % Error handling
+        % release(rx_object);
+        % state=0;
+
     end % Error control
 end % While
 
