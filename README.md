@@ -32,9 +32,15 @@ Please open multiple Matlab windows to run `Hardware_TX.m` and `Hardware_RX.m` r
 * RX2.mat
 
 # GUI :
+* GUI_TX
 
-![Program GUI](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/GUI.png)
-Video : https://www.youtube.com/watch?v=RAbS05toM0M
+![Program GUI_TX](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/GUI_TX.png)
+
+* GUI_RX
+
+![Program GUI_RX](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/GUI_RX.png)
+
+Video Demo : https://www.youtube.com/watch?v=RAbS05toM0M
 ![Program GUI gif](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/GUI_gif.gif)
 
 # System Model :
