@@ -33,25 +33,33 @@ while(state==1)
         subplot(2,4,1),plot(RX,'.');title('RX-Raw');axis([-1.5 1.5 -1.5 1.5]);axis square;
         subplot(2,4,2),plot(RX_real);title('I');axis([1 3000 -1.5 1.5]);axis square;
         subplot(2,4,3),plot(RX_imag);title('Q');axis([1 3000 -1.5 1.5]);axis square;
+        
+        [pxx,Welch_Spectrum_f] = pwelch(RX,[],[],[],rx_object.BasebandSampleRate,'centered','power');
+        pmax = pwelch(RX,[],[],[],rx_object.BasebandSampleRate,'maxhold','centered','power');
+        pmin = pwelch(RX,[],[],[],rx_object.BasebandSampleRate,'minhold','centered','power');
+        subplot(2,4,4),plot(Welch_Spectrum_f,pow2db(pxx));
+        title('Welch Power Spectral Density');axis([-rx_object.BasebandSampleRate/2 rx_object.BasebandSampleRate/2 -100 -10]);axis square;
+        
         drawnow;
         
         % ----- Demodulation -----%
         [Threshold,M_n,Threshold_graph,H_est_time,RX_Payload_1_no_Equalizer,RX_Payload_2_no_Equalizer,RX_Payload_1_no_pilot,RX_Payload_2_no_pilot,BER]=OFDM_RX(RX);
-        subplot(2,4,4),plot(1:length(M_n),M_n,1:length(M_n),Threshold_graph);title('Packet Detection');axis([1,length(M_n),0,1.2]);axis square;
-        subplot(2,4,5),plot(abs(H_est_time));title('Channel Estimation');axis([1 64 0 7]);axis square;
+        subplot(2,4,5),plot(1:length(M_n),M_n,1:length(M_n),Threshold_graph);title('Packet Detection');axis([1,length(M_n),0,1.2]);axis square;
+        subplot(2,4,6),plot(abs(H_est_time));title('Channel Estimation');axis([1 64 0 7]);axis square;
 
-        subplot(2,4,6),plot(RX_Payload_1_no_Equalizer,'*');
+        subplot(2,4,7),plot(RX_Payload_1_no_Equalizer,'*');
         hold on
-        subplot(2,4,6),plot(RX_Payload_2_no_Equalizer,'*');
+        subplot(2,4,7),plot(RX_Payload_2_no_Equalizer,'*');
         title('Before Equalizer');axis([-8 8 -8 8]);axis square;
         hold off
 
-        subplot(2,4,7),plot(RX_Payload_1_no_pilot,'*');
+        subplot(2,4,8),plot(RX_Payload_1_no_pilot,'*');
         hold on
-        subplot(2,4,7),plot(RX_Payload_2_no_pilot,'*');
+        subplot(2,4,8),plot(RX_Payload_2_no_pilot,'*');
         title({'Demodulation';['BER = ',num2str(BER)]});axis([-1.5 1.5 -1.5 1.5]);axis square;
         hold off
-        set(gcf,'Units','centimeters','position',[1 2 49 24]);
+        
+        set(gcf,'Units','centimeters','position',[1 2 49 24]); % GUI window size
         
         Run_time_number=Run_time_number+1;
     end % Start
