@@ -20,7 +20,6 @@ Run_time_number=1;
 while(state==1)
     try
     
-    tic
     [data_rx_raw, dataLength, lostSample] = step(rx_object);
     if Run_time_number>Ready_Time
         
