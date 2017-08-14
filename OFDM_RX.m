@@ -109,8 +109,6 @@ BER=Error_bits/(length(data_Payload_1)+length(data_Payload_2));
 % set(gcf,'Units','centimeters','position',[1 2 49 24]);
 % 
 % [pxx,Welch_Spectrum_f] = pwelch(RX,[],[],[],1/Ts,'centered','power');
-% pmax = pwelch(RX,[],[],[],1/Ts,'maxhold','centered','power');
-% pmin = pwelch(RX,[],[],[],1/Ts,'minhold','centered','power');
 % subplot(2,4,8),plot(Welch_Spectrum_f,pow2db(pxx));
 % title('Welch Power Spectral Density');axis square;
 %%

@@ -34,8 +34,6 @@ while(state==1)
         subplot(2,4,3),plot(RX_imag);title('Q');axis([1 3000 -1.5 1.5]);axis square;
         
         [pxx,Welch_Spectrum_f] = pwelch(RX,[],[],[],rx_object.BasebandSampleRate,'centered','power');
-        pmax = pwelch(RX,[],[],[],rx_object.BasebandSampleRate,'maxhold','centered','power');
-        pmin = pwelch(RX,[],[],[],rx_object.BasebandSampleRate,'minhold','centered','power');
         subplot(2,4,4),plot(Welch_Spectrum_f,pow2db(pxx));
         title('Welch Power Spectral Density');axis([-rx_object.BasebandSampleRate/2 rx_object.BasebandSampleRate/2 -100 -10]);axis square;
         
