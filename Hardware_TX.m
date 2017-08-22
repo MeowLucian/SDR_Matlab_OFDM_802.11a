@@ -22,17 +22,21 @@ TX_real=real(TX_signal)'; % [972x1]
 TX_imag=imag(TX_signal)'; % [972x1]
 TX=TX_real+TX_imag*j; % [972x1]
 % transmitRepeat Mode
-TTX=[TX;TX;TX;TX;TX]; % Transmit Data must be >= 4096
+TTX=repmat(TX,5,1); % Transmit Data must be >= 4096
+state=1;
 %% Main
 switch Mode
     case 'step'
-        while 1>0
-           step(tx_object,TX);
+        while(state==1)
+           step(tx_object,TTX);
+           % ----- Button Behavior -----%
+           set(button,'Callback','setstate0_TX'); % Set the reaction of pushing button
+           drawnow;
         end
         release(tx_object);
 
     case 'transmitRepeat'
         transmitRepeat(tx_object, TTX);
+        % ----- Button Behavior -----%
+        set(button,'Callback','setstate0_TX'); % Set the reaction of pushing button
 end
-
-set(button,'Callback','setstate0_TX'); % Set the reaction of pushing button
