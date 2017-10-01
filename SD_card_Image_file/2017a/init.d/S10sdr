@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# Zynq SDR HSP Init
+#
+
+source /etc/bootvars.conf
+
+FIRMWARE_FILE=sdr_firmware.elf
+FIMRWARE_PATH=${_SD_ROOT}/${FIRMWARE_FILE}
+
+case "$1" in
+    start)
+        # Stop info messages from displaying on the console.
+        echo 5 > /proc/sys/kernel/printk
+
+        echo "+++ Setting recv socket buffer limit to 1048576"
+        sysctl -w net.core.rmem_max=1048576 
+        echo "+++ Setting send socket buffer limit to 1048576"
+        sysctl -w net.core.wmem_max=1048576 
+
+        if [ -f $FIMRWARE_PATH ]; then
+            echo "+++ Launching SDR Firmware..."
+            taskset 2 $FIMRWARE_PATH &
+            echo $! > /tmp/${FIRMWARE_FILE}.pid
+        else
+            echo "ERROR: $FIMRWARE_PATH not found"
+            exit 1
+        fi
+        ;;
+    stop)
+        if [ -f /tmp/${FIRMWARE_FILE}.pid ]; then
+            echo "+++ Terminating the SDR Firmware..."
+            pid=$(cat /tmp/${FIRMWARE_FILE}.pid)
+            kill $pid
+        fi
+        ;;
+    restart | reload)
+        "$0" stop
+        "$0" start
+        exit $?
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+

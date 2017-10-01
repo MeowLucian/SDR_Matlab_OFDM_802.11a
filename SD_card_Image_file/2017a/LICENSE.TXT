@@ -1,0 +1,17 @@
+Some of the binary files included in this image are based on software
+covered under the GPL. Please see GPL.TXT for the full text of this license.
+
+The GPL and the rights described therein, do NOT apply to the whole of the
+Support Package, or any other part of MathWorks software.
+
+Source code for the software covered under the GPL can be found at the
+following locations:
+
+Linux Kernel:
+https://github.com/mathworks/xilinx-linux
+
+U-Boot Bootloader:
+https://github.com/mathworks/xilinx-uboot
+
+Buildroot-based root filesystem:
+https://github.com/mathworks/buildroot
