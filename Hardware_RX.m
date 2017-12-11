@@ -1,14 +1,15 @@
-clear;close all;clc;j=1i;
+clear;close all;clc;
+Global_Parameters;
 %% Button setting
 figure('Name','RX','NumberTitle','off');
 button = uicontrol; % Generate GUI button
 set(button,'String','Stop !','Position',[1475 15 100 60]); % Add "Stop !" text
 set(gcf,'Units','centimeters','position',[1 2 49 24]); % Set the postion of GUI
-%% Parameter
+%% Hardware Parameters
 rx_object = sdrrx('ZedBoard and FMCOMMS2/3/4',...
            'IPAddress','192.168.3.3',...
-           'CenterFrequency',5e9,...
-           'BasebandSampleRate', 20e6,...   % Bandwidth
+           'CenterFrequency',CenterFrequency,...
+           'BasebandSampleRate', Bandwidth,...   % Bandwidth
            'ChannelMapping', 1,...
            'SamplesPerFrame', 3000);
 

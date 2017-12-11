@@ -1,19 +1,20 @@
-% function [Threshold,M_n,Threshold_graph,H_est_time,RX_Payload_1_no_Equalizer,RX_Payload_2_no_Equalizer,RX_Payload_1_no_pilot,RX_Payload_2_no_pilot,BER]=OFDM_RX(RX)
-% j=1i;
+function [Threshold,M_n,Threshold_graph,H_est_time,RX_Payload_1_no_Equalizer,RX_Payload_2_no_Equalizer,RX_Payload_1_no_pilot,RX_Payload_2_no_pilot,BER]=OFDM_RX(RX)
+Global_Parameters;
 %% Debug mode
-clear;close all;clc;
-load('RX2');
-RX_real=real(RX)';
-RX_imag=imag(RX)';
+% clear;close all;clc;
+% Global_Parameters;
+% load('RX2');
+% RX_real=real(RX)';
+% RX_imag=imag(RX)';
 %% Root Raised Cosine filter
 rolloff=0.5;
-L=6;
+L_RRC=6;
 OVR=2;
-RRC=rcosdesign(rolloff,L,OVR,'sqrt'); % [1x13]
+RRC=rcosdesign(rolloff,L_RRC,OVR,'sqrt'); % [1x13]
 RX_signal=conv(RX,RRC); % [1x3012]
 %% Packet Detection
-D=160;
-L=16;
+D=16;
+L=32;
 C_n=zeros(1,length(RX)-D+1-L);
 P_n=zeros(1,length(RX)-D+1-L);
 C_k=zeros(1,L);
@@ -40,15 +41,14 @@ Length_over_Threshold=230;
 
 for x=1:length(Packet_Front_idx)-1
     if M_n(Packet_Front_idx(x)+Length_over_Threshold)>Threshold;
-        idx=Packet_Front_idx(x)+L+1;
+        idx=Packet_Front_idx(x)+L_RRC+1;
     end % if Loop
 end % for Loop
 Threshold_graph=Threshold*ones(1,length(M_n));
-Threshold_graph(idx-L-1)=1.15;
+Threshold_graph(idx-L_RRC-1)=1.15;
 %% Downsampling
 Frame_DWN_sampling=RX_signal(idx:OVR:OVR*480+idx-1); % [1x480] Frame length
 %% Coarse CFO Estimation
-Ts=50e-9;
 z=Frame_DWN_sampling(D*5+1:D*6)*Frame_DWN_sampling(D*6+1:D*7)'; % [1x16]*[16x1]
 f_Coarse_est=(-1/(2*pi*D*Ts))*angle(z);
 Frame_After_Coarse=Frame_DWN_sampling.*exp(-j*2*pi*f_Coarse_est*Ts*(0:480-1)); % [1x480]
@@ -62,8 +62,7 @@ Long_preamble_1=Frame_After_Fine(D*12+1:D*16); % [1x64]
 Long_preamble_2=Frame_After_Fine(D*16+1:D*20); % [1x64]
 Long_preamble_1_After_FFT=fftshift(fft(Long_preamble_1)); % [1x64]
 Long_preamble_2_After_FFT=fftshift(fft(Long_preamble_2)); % [1x64]
-load('Long_preamble_slot_Frequency'); % [1x64]
-H_est=0.5*(Long_preamble_1_After_FFT+Long_preamble_2_After_FFT).*complex(Long_preamble_slot_Frequency); % [1x64]
+H_est=0.5*(Long_preamble_1_After_FFT+Long_preamble_2_After_FFT).*conj(Long_preamble_slot_Frequency); % [1x64]
 H_est_time=ifft(ifftshift(H_est)); % [1x64]
 %% One tap Equalizer
 RX_Payload_1_time=Frame_After_Fine(320+1:400); % [1x80]
@@ -84,33 +83,32 @@ RX_Payload_2_no_Equalizer=[RX_Payload_2_Frequency(7:11),RX_Payload_2_Frequency(1
 RX_Payload_2_no_pilot=[RX_Payload_2_Frequency_Equalizer(7:11),RX_Payload_2_Frequency_Equalizer(13:25),RX_Payload_2_Frequency_Equalizer(27:32),RX_Payload_2_Frequency_Equalizer(34:39),RX_Payload_2_Frequency_Equalizer(41:53),RX_Payload_2_Frequency_Equalizer(55:59)]; % [1x48]
 RX_Payload_2_Final=pskdemod(RX_Payload_2_no_pilot,4,pi/4); % [1x48]
 %% BER calculation
-load('data_Payload_1'); % [1x48]
-load('data_Payload_2'); % [1x48]
 Error_bits=sum([abs(sign(data_Payload_1-RX_Payload_1_Final)),abs(sign(data_Payload_2-RX_Payload_2_Final))]);
 BER=Error_bits/(length(data_Payload_1)+length(data_Payload_2));
 %% Plot
-subplot(2,4,1),plot(RX,'.');title('RX-Raw');axis([-1.5 1.5 -1.5 1.5]);axis square;
-
-subplot(2,4,2),plot(RX_real);title('I');axis([1 3000 -1.5 1.5]);axis square;
-subplot(2,4,3),plot(RX_imag);title('Q');axis([1 3000 -1.5 1.5]);axis square;
-subplot(2,4,4),plot(1:length(M_n),M_n,1:length(M_n),Threshold_graph);title('Packet Detection');axis([1,length(M_n),0,1.2]);axis square;
-subplot(2,4,5),plot(abs(H_est_time));title('Channel Estimation');axis([1 64 0 7]);axis square;
-
-subplot(2,4,6),plot(RX_Payload_1_no_Equalizer,'*');
-hold on
-subplot(2,4,6),plot(RX_Payload_2_no_Equalizer,'*');
-title('Before Equalizer');axis([-8 8 -8 8]);axis square;
-hold off
-
-subplot(2,4,7),plot(RX_Payload_1_no_pilot,'*');
-hold on
-subplot(2,4,7),plot(RX_Payload_2_no_pilot,'*');
-title({'Demodulation';['BER = ',num2str(BER)]});axis([-1.5 1.5 -1.5 1.5]);axis square;
-hold off
-set(gcf,'Units','centimeters','position',[1 2 49 24]);
-
-[pxx,Welch_Spectrum_f] = pwelch(RX,[],[],[],1/Ts,'centered','power');
-subplot(2,4,8),plot(Welch_Spectrum_f,pow2db(pxx));
-title('Welch Power Spectral Density');axis square;
-%%
-% end
+% subplot(2,4,1),plot(RX,'.');title('RX-Raw');axis([-1.5 1.5 -1.5 1.5]);axis square;
+% %--------------------------------------------------------------------------------%
+% subplot(2,4,2),plot(RX_real);title('I');axis([1 3000 -1.5 1.5]);axis square;
+% subplot(2,4,3),plot(RX_imag);title('Q');axis([1 3000 -1.5 1.5]);axis square;
+% %--------------------------------------------------------------------------------%
+% [pxx,Welch_Spectrum_f] = pwelch(RX,[],[],[],1/Ts,'centered','power');
+% subplot(2,4,4),plot(Welch_Spectrum_f,pow2db(pxx));
+% title('Welch Power Spectral Density');axis square;
+% %--------------------------------------------------------------------------------%
+% subplot(2,4,5),plot(1:length(M_n),M_n,1:length(M_n),Threshold_graph);title('Packet Detection');axis([1,length(M_n),0,1.2]);axis square;
+% subplot(2,4,6),plot(abs(H_est_time));title('Channel Estimation');axis([1 64 0 7]);axis square;
+% %--------------------------------------------------------------------------------%
+% subplot(2,4,7),plot(RX_Payload_1_no_Equalizer,'*');
+% hold on
+% subplot(2,4,7),plot(RX_Payload_2_no_Equalizer,'*');
+% title('Before Equalizer');axis([-8 8 -8 8]);axis square;
+% hold off
+% %--------------------------------------------------------------------------------%
+% subplot(2,4,8),plot(RX_Payload_1_no_pilot,'*');
+% hold on
+% subplot(2,4,8),plot(RX_Payload_2_no_pilot,'*');
+% title({'Demodulation';['BER = ',num2str(BER)]});axis([-1.5 1.5 -1.5 1.5]);axis square;
+% hold off
+% set(gcf,'Units','centimeters','position',[1 2 49 24]);
+%% End function
+end

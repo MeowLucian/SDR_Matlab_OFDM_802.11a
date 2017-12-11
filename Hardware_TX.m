@@ -1,16 +1,16 @@
-clear;close all;clc;j=1i;
-%% Hardware Parameter
+clear;close all;clc;
+Global_Parameters;
+%% Hardware Parameters
 Mode='transmitRepeat'; % Select Mode
-
 tx_object = sdrtx('ZedBoard and FMCOMMS2/3/4', ...
            'IPAddress',            '192.168.3.2', ...
-           'CenterFrequency',      5e9, ...
-           'BasebandSampleRate',   20e6, ...  % Bandwidth
+           'CenterFrequency',      CenterFrequency, ...
+           'BasebandSampleRate',   Bandwidth, ...  % Bandwidth
            'Gain',                 0, ...
            'ChannelMapping',       1);
 %          'EnableBurstMode',1,...
 
-%% Button setting
+%% Button Setting
 figure('Name','TX','NumberTitle','off');
 AuthorDisplay=uicontrol('Style', 'text', 'Position',[20,150,230,35],'String', 'Stop Transmission','FontSize',20,'HorizontalAlignment','left','BackgroundColor',[0.937 0.867 0.867]);
 button = uicontrol; % Generate GUI button
