@@ -1,4 +1,4 @@
-clear;close all;clc;
+clear;close all;clc;j=1i;
 Global_Parameters;
 %% Button setting
 figure('Name','RX','NumberTitle','off');
@@ -8,8 +8,8 @@ set(gcf,'Units','centimeters','position',[1 2 49 24]); % Set the postion of GUI
 %% Hardware Parameters
 rx_object = sdrrx('ZedBoard and FMCOMMS2/3/4',...
            'IPAddress','192.168.3.3',...
-           'CenterFrequency',CenterFrequency,...
-           'BasebandSampleRate', Bandwidth,...   % Bandwidth
+           'CenterFrequency',Parameters_struct.CenterFrequency,...
+           'BasebandSampleRate', Parameters_struct.Bandwidth,...   % Bandwidth
            'ChannelMapping', 1,...
            'SamplesPerFrame', 3000);
 
@@ -41,7 +41,7 @@ while(state==1)
         drawnow;
         
         % ----- Demodulation -----%
-        [Threshold,M_n,Threshold_graph,H_est_time,RX_Payload_1_no_Equalizer,RX_Payload_2_no_Equalizer,RX_Payload_1_no_pilot,RX_Payload_2_no_pilot,BER]=OFDM_RX(RX);
+        [Threshold,M_n,Threshold_graph,H_est_time,RX_Payload_1_no_Equalizer,RX_Payload_2_no_Equalizer,RX_Payload_1_no_pilot,RX_Payload_2_no_pilot,BER]=OFDM_RX(RX,Parameters_struct);
         subplot(2,4,5),plot(1:length(M_n),M_n,1:length(M_n),Threshold_graph);title('Packet Detection');axis([1,length(M_n),0,1.2]);axis square;
         subplot(2,4,6),plot(abs(H_est_time));title('Channel Estimation');axis([1 64 0 7]);axis square;
 
