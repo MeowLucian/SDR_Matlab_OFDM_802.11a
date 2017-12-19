@@ -13,7 +13,7 @@ rx_object = sdrrx('ZedBoard and FMCOMMS2/3/4',...
            'ChannelMapping', 1,...
            'SamplesPerFrame', 3000);
 
-Ready_Time=200;
+Ready_Time=0;
 scale=1024;
 %% Main
 state=1; % status Start
@@ -25,17 +25,15 @@ while(state==1)
     if Run_time_number>Ready_Time
         
         % ----- RX Raw -----%
-        data_rx=double(data_rx_raw)./scale; % [3000x1]
-        RX_real=real(data_rx)';
-        RX_imag=imag(data_rx)';
-        RX=RX_real+RX_imag*j; % [1x3000]
+        data_rx_scaled=double(data_rx_raw)./scale; % [3000x1]
+        RX=data_rx_scaled.'; % [1x3000]
         
         subplot(2,4,1),plot(RX,'.');title('RX-Raw');axis([-1.5 1.5 -1.5 1.5]);axis square;
-        subplot(2,4,2),plot(RX_real);title('I');axis([1 3000 -1.5 1.5]);axis square;
-        subplot(2,4,3),plot(RX_imag);title('Q');axis([1 3000 -1.5 1.5]);axis square;
+        subplot(2,4,2),plot(real(RX));title('I');axis([1 3000 -1.5 1.5]);axis square;
+        subplot(2,4,3),plot(imag(RX));title('Q');axis([1 3000 -1.5 1.5]);axis square;
         
-        [pxx,Welch_Spectrum_f] = pwelch(RX,[],[],[],rx_object.BasebandSampleRate,'centered','power');
-        subplot(2,4,4),plot(Welch_Spectrum_f,pow2db(pxx));
+        [Spectrum_waveform,Welch_Spectrum_frequency] = pwelch(RX,[],[],[],rx_object.BasebandSampleRate,'centered','power');
+        subplot(2,4,4),plot(Welch_Spectrum_frequency,pow2db(Spectrum_waveform));
         title('Welch Power Spectral Density');axis([-rx_object.BasebandSampleRate/2 rx_object.BasebandSampleRate/2 -100 -10]);axis square;
         
         drawnow;
@@ -47,15 +45,9 @@ while(state==1)
 
         subplot(2,4,7),plot([RX_Payload_1_no_Equalizer,RX_Payload_2_no_Equalizer],'*');
         title('Before Equalizer');axis([-8 8 -8 8]);axis square;
-%         hold on
-%         subplot(2,4,7),plot(RX_Payload_2_no_Equalizer,'*');
-%         hold off
         
         subplot(2,4,8),plot([RX_Payload_1_no_pilot,RX_Payload_2_no_pilot],'*');
         title({'Demodulation';['BER = ',num2str(BER)]});axis([-1.5 1.5 -1.5 1.5]);axis square;
-%         hold on
-%         subplot(2,4,8),plot(RX_Payload_2_no_pilot,'*');
-%         hold off
         
         set(gcf,'Units','centimeters','position',[1 2 49 24]); % GUI window size
         
@@ -76,7 +68,7 @@ while(state==1)
         disp(ErrorMessage);
         fprintf(2,'Error occurred & Stop Hardware\n');
         
-        % Error handling
+        % ----- Error Handling -----%
         % release(rx_object);
         % state=0;
 
