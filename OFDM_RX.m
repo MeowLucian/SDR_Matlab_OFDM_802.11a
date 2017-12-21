@@ -2,7 +2,7 @@ function [Threshold,M_n,Threshold_graph,H_est_time,RX_Payload_1_no_Equalizer,RX_
 %% Debug mode
 Debug_mode='off';
 if strcmp(Debug_mode,'on')
-   clear;close all;clc;
+   clearvars -except Debug_mode;close all;clc;
    Global_Parameters;
    load('RX');
 end
@@ -89,7 +89,7 @@ RX_Payload_2_Final=pskdemod(RX_Payload_2_no_pilot,4,pi/4); % [1x48]
 Error_bits=sum([abs(sign(Parameters_struct.data_Payload_1-RX_Payload_1_Final)),abs(sign(Parameters_struct.data_Payload_2-RX_Payload_2_Final))]);
 BER=Error_bits/(length(Parameters_struct.data_Payload_1)+length(Parameters_struct.data_Payload_2));
 %% Plot
-if strcmp(Debug_mode,'true')
+if strcmp(Debug_mode,'on')
     subplot(2,4,1),plot(RX,'.');title('RX-Raw');axis([-1.5 1.5 -1.5 1.5]);axis square;
     %--------------------------------------------------------------------------------%
     subplot(2,4,2),plot(real(RX));title('I');axis([1 3000 -1.5 1.5]);axis square;
