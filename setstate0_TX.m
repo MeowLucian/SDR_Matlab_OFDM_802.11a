@@ -1,3 +1,3 @@
-state=0;
+state = 0;
 release(tx_object);
 close all;
