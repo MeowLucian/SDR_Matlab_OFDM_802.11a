@@ -12,7 +12,7 @@ tx_object = sdrtx('ZedBoard and FMCOMMS2/3/4', ...
 
 %% Button Setting
 figure('Name','TX','NumberTitle','off');
-TransmittingDisplay = uicontrol('Style', 'text', 'Position',[20,150,230,35],'String', 'Transmitting','FontSize',20,'HorizontalAlignment','left','BackgroundColor',[0.937 0.867 0.867]);
+TransmittingDisplay = uicontrol('Style', 'text', 'Position',[55,150,155,35],'String', 'Transmitting','FontSize',20,'HorizontalAlignment','left','BackgroundColor',[0.937 0.867 0.867]);
 button = uicontrol; % Generate GUI button
 set(button,'String','Stop !','Position',[80 50 100 60]); % Add "Stop !" text
 set(gcf,'Units','centimeters','position',[3 3 7 6]); % Set the postion of GUI
