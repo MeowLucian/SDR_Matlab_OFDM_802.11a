@@ -49,8 +49,6 @@ while(state == 1)
         subplot(2,4,8),plot([RX_Payload_1_no_pilot,RX_Payload_2_no_pilot],'*');
         title({'Demodulation';['BER = ',num2str(BER)]});axis([-1.5 1.5 -1.5 1.5]);axis square;
         
-        set(gcf,'Units','centimeters','position',[1 2 49 24]); % GUI window size
-        
         Run_time_number = Run_time_number+1;
     end % Start
     
