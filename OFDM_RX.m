@@ -100,7 +100,7 @@ if strcmp(Debug_mode,'on')
     title('Welch Power Spectral Density');axis square;
     %--------------------------------------------------------------------------------%
     subplot(2,4,5),plot(1:length(M_n),M_n,1:length(M_n),Threshold_graph);title('Packet Detection');axis([1,length(M_n),0,1.2]);axis square;
-    subplot(2,4,6),plot(abs(H_est_time));title('Channel Estimation');axis([1 64 0 7]);axis square;
+    subplot(2,4,6),plot(abs(H_est_time));title('Channel Estimation');axis([1 64 0 7]);axis square;xlabel('Time');
     %--------------------------------------------------------------------------------%
     subplot(2,4,7),plot(RX_Payload_1_no_Equalizer,'*');
     hold on
