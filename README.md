@@ -47,6 +47,10 @@ Video Demo : https://www.youtube.com/watch?v=RAbS05toM0M
 
 # System Model :
 
+## OFDM Block Diagram
+
+<img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/OFDM_Block_Diagram.png" width="800">
+
 ## TX System Model
 <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model.png" width="500">
 
