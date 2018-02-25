@@ -1,9 +1,7 @@
 # SDR_Matlab_OFDM_802.11a
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/MeowLucian/SDR_Matlab_OFDM_802.11a/blob/master/LICENSE)
 
-This OFDM demo is based on IEEE 802.11a OFDM protocol without convolutional decoding, de-interleaving and checksum calculation, etc.
-
-This simple code is just for testing SDR hardware.
+This simple OFDM demo is based on IEEE 802.11a OFDM format for testing SDR hardware.
 
 Using Software Designed Radio (SDR) to transmit OFDM signals at 5 GHz.
 
@@ -50,6 +48,23 @@ Video Demo : https://www.youtube.com/watch?v=RAbS05toM0M
 ## OFDM Block Diagram
 
 <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/OFDM_Block_Diagram.png" width="800">
+
+## Code Function :
+
+### Implemented
+
+* Data Signal Mapping
+* Packet Detection
+* Coarse/Fine Frequency Offset Estimation & Compensation
+* Channel Estimation & One-Tap Equalizer
+* Data De-Mapping
+
+### Not implemented yet
+
+* Fine Symbol Timing Estimation
+* Convolutional Decoding
+* De-Interleaving
+* Frame check calculation (It assumes every packet is the same length)
 
 ## TX System Model
 <img src="https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/TX%20System%20Model.png" width="500">
