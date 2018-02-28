@@ -9,6 +9,11 @@ Transmitter and Receiver hardware : Zedboard (Xilinx Zynq®-7000) + AD9361 (Anal
 
 ![Hardware](https://raw.githubusercontent.com/MeowLucian/SDR_Matlab_OFDM_802.11a/master/Picture/Hardware.jpg)
 
+# Software needed :
+
+* Matlab R2016a
+* support package for Xilinx Zynq-Based Radio (R2016a version)
+
 Before executing this code, please follow this [tutorial](https://www.mathworks.com/help/supportpkg/xilinxzynqbasedradio/ug/install-support-package-for-xilinx-zynq-based-radio.html) to install support package for Xilinx Zynq-Based Radio in Matlab.
 
 # Code Structure :
