@@ -66,6 +66,7 @@ Video Demo : https://www.youtube.com/watch?v=RAbS05toM0M
 
 ### Not implemented yet
 
+* AGC (Auto Gain Control)
 * Fine Symbol Timing Estimation
 * Convolutional Decoding
 * De-Interleaving
